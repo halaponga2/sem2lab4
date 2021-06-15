@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="header">
+    <img class="header__invader" src="img/invader.png" alt="space invader">
+</header>    
+<main>
+    <div class="pingpong">
+        <div class="pingpong__bar pingpong__bar-1"></div>
+        <div class="ball pingpong__ball"></div>
+        <div class="pingpong__bar pingpong__bar-2" ></div>
+    </div>
+    <button id="pause">Pause</button>
+
+    <div class="arkanoid">
+        <p class="arkanoid__score"></p>
+        <div class="arkanoid__block arkanoid__block-1"></div>
+        <div class="arkanoid__block arkanoid__block-2"></div>
+        <div class="arkanoid__block arkanoid__block-3"></div>
+        <div class="arkanoid__block arkanoid__block-4"></div>
+        <div class="arkanoid__block arkanoid__block-5"></div>
+        <div class="arkanoid__bar"></div>
+        <div class="arkanoid__ball"></div>
+        <p class="arkanoid__loose">Поражение</p>
+    </div>
+</main>
+    
+    <script src="js/anime.min.js"></script>
+    <script>
+        document.getElementById('pause').addEventListener("click",function(){
+            let pingpongElements = document.querySelector('.pingpong').querySelectorAll("*");
+            for (let i=0; i<pingpongElements.length; i++){
+                pingpongElements[i].classList.toggle("pause");
+            }   
+            let button = document.getElementById('pause');
+            if (button.innerHTML=='Pause'){
+                button.innerHTML='Play'
+            }
+            else{button.innerHTML='Pause';}
+        })
+
+        anime({
+            targets: '.arkanoid__bar',
+            keyframes: [
+                {right: 0},
+                {right: "90%"},
+            ],
+                duration: 4000,
+                easing: 'linear',
+                endDelay:2000,
+                loop: true,
+        })
+        
+        anime({
+            targets: '.arkanoid__ball',
+            keyframes: [
+                {left: "20%", translateY: -300},
+                {left: "50%", translateY: 0},
+                {left: "80%", translateY: -300},
+                {left: "99%", translateY: 0},
+                {left: "60%", translateY: -300},
+                {left: "50%", translateY: 0},
+                {left: "30%", translateY: -300},
+                {left: "50%", translateY: 20},
+            ],
+            duration: 4000,
+            easing: 'linear',
+            loop: true,
+            endDelay:2000,
+        })
+
+        anime({
+            targets: '.arkanoid__loose',
+            opacity:1,
+            duration: 1,
+            delay: 4000,
+            endDelay:2000,
+            loop: true,
+        })
+        const text = document.querySelector('.arkanoid__score')
+        let score = {
+            score_text: 0,
+        }
+        anime({
+            targets: score,
+            score_text: 4,
+            round: 1,
+            easing: 'linear',
+            duration: 4000,
+            endDelay:2000,
+            loop: true,
+            update: function(){
+                text.innerHTML = 'Score: '+score.score_text;
+            }
+            
+        })
+        const tl = anime.timeline({
+            easing:'linear',
+            endDelay:2500,
+            loop: true
+        });
+        tl.add({
+            targets: '.arkanoid__block-1',
+            opacity: 0,
+            duration: 1
+        },'+=500');
+        tl.add({
+            targets: '.arkanoid__block-5',
+            opacity: 0,
+            duration: 1
+        },'-=1500');
+        tl.add({
+            targets: '.arkanoid__block-4',
+            opacity: 0,
+            duration: 1
+        },'-=1500') ;
+        tl.add({
+            targets: '.arkanoid__block-2',
+            opacity: 0,
+            duration: 1
+        },'-=1500');
+    </script>
+</body>
+</html>

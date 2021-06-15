@@ -1,0 +1,146 @@
+@keyframes pingpong__ball-movement{
+    from,to{
+        top:5%;
+        left:0;
+    }
+    12.5%{
+        top:32.5%;
+        left:50%;
+    }
+    25%{
+        top:70%;
+        left:99%;
+    }
+    37.5%{
+        top:0%;
+        left:50%;
+    }
+    50%{
+        left:0%;
+        top:80%;
+    }
+    62.5%{
+        top:99%;
+        left:50%;
+    }
+    75%{
+        top: 30%;
+        left:99%;
+    }
+    87.5%{
+        left:50%;
+    }
+    100%{
+        left:0%;
+    }
+}
+@keyframes pingpong__bar-movement{
+    from,to{
+        top:0;
+    }
+    50% {
+        top:75%
+    }
+}
+
+.header{
+    &__invader{
+        display: block;
+        width: 50px;
+        margin: 0 auto;
+        transition-property: width, transform;
+        transition-duration: .5s;
+        transition-timing-function: ease-in-out;
+        &:hover{
+            width: 100px;
+            transform: rotate(360deg)
+        }
+    }
+}
+
+%ball{
+    position:absolute;
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+%area{ position: relative;
+    border: 2px solid black;
+    height: 400px;
+    width: 70%;
+    margin: 50px auto;}
+.pingpong{
+   @extend %area;
+    &__bar{
+        position: absolute;
+        background-color: black;
+        width: 10px;
+        height: 100px;
+        &-1{
+            animation: pingpong__bar-movement 3s linear  infinite normal;
+        }
+        &-2{
+            right:0;
+            animation: pingpong__bar-movement 3s linear 1s infinite normal;
+        }
+    }
+    &__ball{
+       @extend %ball;
+        animation: pingpong__ball-movement 9s linear  infinite normal;
+    }
+}
+
+.pause{
+    animation-play-state: paused;
+}
+#pause{
+    display: block;
+    margin:0 auto;
+}
+
+.arkanoid{
+    @extend %area;
+    &__block{
+        position: absolute;
+        width: 10%;
+        height: 15px;
+        &-1{
+            background-color: red;
+            left:15%
+        }
+        &-2{
+            background-color: green;
+            left: 30%
+        }
+        &-3{
+            background-color: yellow;
+            left: 45%
+        }
+        &-4{
+            background-color: purple;
+            left:60%;
+        }
+        &-5{
+            background-color: blue;
+            left:75%
+        }
+    }
+    &__bar{
+        background-color: black;
+        width: 10%;
+        height: 15px;
+        position: absolute;
+        top:95%
+    }
+    &__ball{
+        @extend %ball;
+        top:92%;
+    }
+    &__loose{
+        color:red;
+        font-size: 2em;
+        text-align: center;
+        opacity:0;
+    }
+}

@@ -1,0 +1,188 @@
+@-webkit-keyframes pingpong__ball-movement {
+  from, to {
+    top: 5%;
+    left: 0;
+  }
+  12.5% {
+    top: 32.5%;
+    left: 50%;
+  }
+  25% {
+    top: 70%;
+    left: 99%;
+  }
+  37.5% {
+    top: 0%;
+    left: 50%;
+  }
+  50% {
+    left: 0%;
+    top: 80%;
+  }
+  62.5% {
+    top: 99%;
+    left: 50%;
+  }
+  75% {
+    top: 30%;
+    left: 99%;
+  }
+  87.5% {
+    left: 50%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+@keyframes pingpong__ball-movement {
+  from, to {
+    top: 5%;
+    left: 0;
+  }
+  12.5% {
+    top: 32.5%;
+    left: 50%;
+  }
+  25% {
+    top: 70%;
+    left: 99%;
+  }
+  37.5% {
+    top: 0%;
+    left: 50%;
+  }
+  50% {
+    left: 0%;
+    top: 80%;
+  }
+  62.5% {
+    top: 99%;
+    left: 50%;
+  }
+  75% {
+    top: 30%;
+    left: 99%;
+  }
+  87.5% {
+    left: 50%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+@-webkit-keyframes pingpong__bar-movement {
+  from, to {
+    top: 0;
+  }
+  50% {
+    top: 75%;
+  }
+}
+@keyframes pingpong__bar-movement {
+  from, to {
+    top: 0;
+  }
+  50% {
+    top: 75%;
+  }
+}
+.header__invader {
+  display: block;
+  width: 50px;
+  margin: 0 auto;
+  transition-property: width, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.header__invader:hover {
+  width: 100px;
+  transform: rotate(360deg);
+}
+
+.arkanoid__ball, .pingpong__ball {
+  position: absolute;
+  background-color: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.arkanoid, .pingpong {
+  position: relative;
+  border: 2px solid black;
+  height: 400px;
+  width: 70%;
+  margin: 50px auto;
+}
+
+.pingpong__bar {
+  position: absolute;
+  background-color: black;
+  width: 10px;
+  height: 100px;
+}
+.pingpong__bar-1 {
+  -webkit-animation: pingpong__bar-movement 3s linear infinite normal;
+          animation: pingpong__bar-movement 3s linear infinite normal;
+}
+.pingpong__bar-2 {
+  right: 0;
+  -webkit-animation: pingpong__bar-movement 3s linear 1s infinite normal;
+          animation: pingpong__bar-movement 3s linear 1s infinite normal;
+}
+.pingpong__ball {
+  -webkit-animation: pingpong__ball-movement 9s linear infinite normal;
+          animation: pingpong__ball-movement 9s linear infinite normal;
+}
+
+.pause {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+#pause {
+  display: block;
+  margin: 0 auto;
+}
+
+.arkanoid__block {
+  position: absolute;
+  width: 10%;
+  height: 15px;
+}
+.arkanoid__block-1 {
+  background-color: red;
+  left: 15%;
+}
+.arkanoid__block-2 {
+  background-color: green;
+  left: 30%;
+}
+.arkanoid__block-3 {
+  background-color: yellow;
+  left: 45%;
+}
+.arkanoid__block-4 {
+  background-color: purple;
+  left: 60%;
+}
+.arkanoid__block-5 {
+  background-color: blue;
+  left: 75%;
+}
+.arkanoid__bar {
+  background-color: black;
+  width: 10%;
+  height: 15px;
+  position: absolute;
+  top: 95%;
+}
+.arkanoid__ball {
+  top: 92%;
+}
+.arkanoid__loose {
+  color: red;
+  font-size: 2em;
+  text-align: center;
+  opacity: 0;
+}/*# sourceMappingURL=styles.css.map */
